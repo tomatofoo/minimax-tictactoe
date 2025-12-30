@@ -2,10 +2,8 @@ import sys
 import math
 import random
 
-from typing import Optional
 
-
-def evaluate(board: list) -> Optional[int]:
+def evaluate(board: list) -> int | float:
     if ((board[0], board[1], board[2]) == (1, 1, 1)
         or (board[3], board[4], board[5]) == (1, 1, 1)
         or (board[6], board[7], board[8]) == (1, 1, 1)
@@ -29,7 +27,7 @@ def evaluate(board: list) -> Optional[int]:
     else:
         return 0.0 # float zero indicates game unfinished
 
-def minimax(board: list, depth: int, player: int):
+def minimax(board: list, depth: int, player: int) -> int:
     evaluation = evaluate(board)
     if depth <= 0 or type(evaluation) != float:
         return evaluation
@@ -51,7 +49,7 @@ def minimax(board: list, depth: int, player: int):
         return minimum
 
 
-def main():
+def main() -> None:
     try:
         turn = random.getrandbits(1)
         board = [0] * 9
